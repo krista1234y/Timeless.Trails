@@ -1,0 +1,29 @@
+<!-- snippets/product.liquid -->
+
+<div class="product-info">
+  <h3 class="product-title">{{ product.title }}</h3>
+  <p class="product-price">{{ product.price | money }}</p>
+  <div class="product-description">{{ product.description }}</div>
+</div>
+
+<style>
+  .product-info {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .product-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .product-price {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .product-description {
+    font-size: 16px;
+    color: #555;
+  }
+</style>
