@@ -1,0 +1,20 @@
+{
+  "en": {
+    "general": {
+      "home": "Home",
+      "about_us": "About Us",
+      "products": "Products",
+      "contact": "Contact",
+      "select_variant": "Select Variant:",
+      "just_laugh_button": "Just Laugh"
+    },
+    "header": {
+      "site_title": "Timeless Trails"
+    },
+    "slogan": "Nature's beauty illuminated in every candle",
+    "footer": {
+      "copyright": "© 2023 Timeless Trails. All rights reserved."
+    }
+    // Add more translations as needed
+  }
+}
