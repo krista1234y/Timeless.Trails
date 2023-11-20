@@ -1,0 +1,139 @@
+<!-- sections/product.liquid -->
+
+{% schema %}
+{
+  "name": "Product Section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Product Image",
+      "id": "product_image",
+      "default": "candle.jpg"
+    },
+    {
+      "type": "color",
+      "label": "Button Color",
+      "id": "button_color",
+      "default": "#ff9702"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Section Title",
+          "id": "section_title",
+          "default": "Featured Product"
+        },
+        {
+          "type": "text",
+          "label": "Button Text",
+          "id": "button_text",
+          "default": "Add to Cart"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Default",
+          "category": "Custom"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div class="product-section">
+  <h2 class="section-title">{{ section.settings.section_title }}</h2>
+
+  <div class="product-image-container">
+    <img src="{{ section.settings.product_image | asset_url }}" alt="{{ product.title }}" class="product-image">
+    <div class="product-image-placeholder">
+      <!-- Add a placeholder image or text here -->
+    </div>
+  </div>
+
+  <label for="variant-select">{{ 'general.select_variant' | t }}</label>
+  <select name="id" id="variant-select" class="variant-select">
+    {% for variant in product.variants %}
+      <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+    {% endfor %}
+  </select>
+
+  <button id="add-to-cart" style="background-color: {{ section.settings.button_color }};">{{ section.settings.button_text }}</button>
+</div>
+
+{% stylesheet %}
+.product-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.product-image-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+.product-image {
+  width: 300px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.variant-select {
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.product-image-placeholder {
+  display: none; /* Hide by default */
+  width: 300px;
+  height: 300px;
+  background-color: #ddd; /* Placeholder background color */
+  text-align: center;
+  line-height: 300px; /* Vertical centering */
+}
+
+#add-to-cart {
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#add-to-cart:hover {
+  background-color: darken({{ section.settings.button_color }}, 10%);
+}
+
+/* Add more styles as needed */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+{% endstylesheet %}
+
+{% script %}
+(function($) {
+  $(document).ready(function() {
+    // Your JavaScript code for the product section goes here
+    $('#add-to-cart').on('click', function() {
+      // Add your logic for handling the "Add to Cart" button click
+    });
+  });
+})(jQuery);
+{% endscript %}
