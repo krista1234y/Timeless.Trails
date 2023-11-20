@@ -1,0 +1,39 @@
+{% comment %}
+  This is a liquid JavaScript file.
+  It may include liquid tags and variables.
+{% endcomment %}
+
+{% assign product = product | default: current_product %}
+
+(function($) {
+  // Ensure the script runs after the DOM is ready
+  $(document).ready(function() {
+
+    // Event listener for variant select change
+    $('select[name="id"]').on('change', function() {
+      var variantId = $(this).val();
+      var selectedVariant = product.variants.find(function(variant) {
+        return variant.id == variantId;
+      });
+
+      // Update the product image based on the selected variant
+      updateProductImage(selectedVariant);
+    });
+
+    // Function to update the product image
+    function updateProductImage(variant) {
+      // Replace 'product-image' with the actual ID or class of your product image element
+      var $productImage = $('.product-image');
+      
+      // Check if the variant has an image associated with it
+      if (variant && variant.featured_image) {
+        $productImage.attr('src', variant.featured_image.src);
+        $productImage.attr('alt', variant.featured_image.alt);
+      }
+    }
+
+    // Trigger the event on page load to set the initial product image
+    $('select[name="id"]').change();
+
+  });
+})(jQuery);
