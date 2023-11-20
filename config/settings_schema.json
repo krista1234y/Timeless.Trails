@@ -1,0 +1,21 @@
+{
+  "name": "Product Image Settings",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Image Settings"
+    },
+    {
+      "type": "color",
+      "label": "Dropdown Background Color",
+      "id": "dropdown_bg_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "label": "Dropdown Text Color",
+      "id": "dropdown_text_color",
+      "default": "#333333"
+    }
+  ]
+}
